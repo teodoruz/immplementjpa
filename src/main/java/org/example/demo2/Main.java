@@ -16,11 +16,11 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("digite o nome do autor");
+        System.out.println("insert name of author");
         String nome = sc.nextLine();
         Autor a1 = new Autor();
         a1.setNome(nome);
-        System.out.println("digite o nome do livro");
+        System.out.println("insert tittle");
         String titulo = sc.nextLine();
         Book b1 = new Book();
         b1.setTittle(titulo);
