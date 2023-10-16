@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("insert name of author");
+        System.out.println("insert name of author..");
         String nome = sc.nextLine();
         Autor a1 = new Autor();
         a1.setNome(nome);
