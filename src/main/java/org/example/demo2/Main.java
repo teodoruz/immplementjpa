@@ -14,21 +14,59 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
-        System.out.println("insert name of author");
-        String nome = sc.nextLine();
-        Autor a1 = new Autor();
-        a1.setNome(nome);
-        System.out.println("insert tittle");
-        String titulo = sc.nextLine();
-        Book b1 = new Book();
-        b1.setTittle(titulo);
-        b1.setAutor(a1);
-        List<Book> books = new ArrayList();
-        books.add(b1);
-        a1.setBooks(books);
-        ConnectionDAO.connectionDAO(a1, b1);
+        char resp;
+        do{
+            System.out.println("___sistema de gerenciamento de livros___");
+            System.out.println("digite 1 para cadastrar um autor");
+            System.out.println("digite 2 para cadastrar um livro");
+            System.out.println("digite 3 para pesquisar um livro por ID");
+            System.out.println("digite 0 para encerrar o programa");
+            resp = sc.next().charAt(0);
 
-    }
+            Autor a1 = new Autor();
+            Book b1 = new Book();
+
+
+
+
+                if(resp =='1'){
+                    System.out.println("insert name of author");
+                    String nome = sc.next();
+                    a1.setNome(nome);
+                    ConnectionDAO.connectionDAOautor(a1);
+                    System.out.println("autor cadastrado com sucesso!!!");
+                }
+                if(resp == '2'){
+                    System.out.println("insert tittle of book");
+                    String title = sc.next();
+                    sc.nextLine();
+                    b1.setTittle(title);
+                    List<Book> books = new ArrayList();
+                    books.add(b1);
+                    System.out.println("insert ID from author of book");
+                    Long idautor = sc.nextLong();
+                    Autor autor = ConnectionDAO.findAuthorBYId(idautor);
+                    if(autor != null){
+                        b1.setAutor(autor);
+                        ConnectionDAO.connectionDAObook(b1);
+                    }else{
+                        System.out.println("AUTOR NAO ENCONTRADO");
+                    }
+                }
+                if(resp == '3'){
+                    System.out.println("insira o id do livro para buscar no banco de dados");
+                    Long id = sc.nextLong();
+
+                    Book book = ConnectionDAO.findBookById(id);
+                    System.out.println(book.getTittle());
+                    Autor autor = book.getAutor();
+                    System.out.println(autor.getNome());
+                }
+
+
+
+        }while(resp!='0');
+        }
+
 }
