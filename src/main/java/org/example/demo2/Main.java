@@ -20,7 +20,7 @@ public class Main {
         String nome = sc.nextLine();
         Autor a1 = new Autor();
         a1.setNome(nome);
-        System.out.println("insert tittle");
+        System.out.println("insert title");
         String titulo = sc.nextLine();
         Book b1 = new Book();
         b1.setTittle(titulo);
