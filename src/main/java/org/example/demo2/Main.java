@@ -15,6 +15,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         char resp;
         do{
             System.out.println("___sistema de gerenciamento de livros___");
@@ -63,10 +64,6 @@ public class Main {
                     Autor autor = book.getAutor();
                     System.out.println(autor.getNome());
                 }
-
-
-
         }while(resp!='0');
         }
-
 }
